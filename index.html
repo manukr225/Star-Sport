@@ -1,85 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr Bablu</title>
-    
-    <!-- DevTool Disable Library -->
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
-    
-    <!-- HLS Player Library -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr Bablu</title>
 
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Video ratio maintain rakhega aur frame me fit rahega */
-            outline: none;
-        }
+    .embed-container {
+      width: 100vw;
+      height: 100vh;
+    }
 
-        /* Copy block karne ke liye */
-        * {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-        }
-    </style>
+    .embed-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
-<body oncontextmenu="return false;">
 
-    <div class="container">
-        <video id="video" controls autoplay muted playsinline></video>
-    </div>
-
-    <script>
-        // --- Keyboard Security ---
-        document.onkeydown = function(e) {
-            if (e.keyCode == 123) return false; // F12
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-        };
-
-        // --- HLS Logic LINK PASTE HERE M3U8 ONLY ---
-        const video = document.getElementById('video');
-        const source = 'https://n7.sanwalyaarpya.com:1686/hls/starhindi.m3u8?md5=O5xpyHLYHxQz2NO2gaNGMw&expires=1771265961';
-
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(source);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                video.play();
-            });
-        } 
-        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = source;
-            video.addEventListener('loadedmetadata', function() {
-                video.play();
-            });
-        }
-    </script>
+<body>
+  <div class="embed-container">
+    <iframe 
+      src="https://streamcrichd.com/update/star1hi.php"
+      marginheight="0"
+      marginwidth="0"
+      scrolling="no"
+      frameborder="0"
+      allowfullscreen
+      allow="encrypted-media">
+    </iframe>
+  </div>
 </body>
 </html>
